@@ -27,7 +27,7 @@ export default function ApiKeyInput() {
   }
 
   return (
-    <div className="bg-xiaomi-card/50 border border-white/5 rounded-xl p-5 sm:p-6 space-y-4">
+    <div className="bg-xiaomi-card border border-white/5 rounded-xl p-5 sm:p-6 space-y-4">
       <div>
         <h3 className="text-base sm:text-lg font-semibold">{t('api_key_title')}</h3>
         <p className="text-xs sm:text-sm text-xiaomi-muted mt-1">{t('api_key_desc')}</p>

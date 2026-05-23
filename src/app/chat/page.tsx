@@ -85,7 +85,7 @@ export default function ChatPage() {
       <ApiKeyInput />
 
       {/* Chat */}
-      <div className="bg-xiaomi-card/50 border border-white/5 rounded-xl overflow-hidden">
+      <div className="bg-xiaomi-card border border-white/5 rounded-xl overflow-hidden">
         {/* Messages */}
         <div className="h-[350px] sm:h-[400px] overflow-y-auto p-4 sm:p-6 space-y-4">
           {messages.map((msg, i) => (
