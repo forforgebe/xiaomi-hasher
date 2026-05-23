@@ -27,23 +27,23 @@ export default function ApiKeyInput() {
   }
 
   return (
-    <div className="bg-white rounded-2xl border border-xiaomi-border p-6 space-y-4">
+    <div className="bg-xiaomi-card/50 border border-white/5 rounded-xl p-5 sm:p-6 space-y-4">
       <div>
-        <h3 className="text-lg font-semibold text-xiaomi-dark">{t('api_key_title')}</h3>
-        <p className="text-sm text-gray-500 mt-1">{t('api_key_desc')}</p>
+        <h3 className="text-base sm:text-lg font-semibold">{t('api_key_title')}</h3>
+        <p className="text-xs sm:text-sm text-xiaomi-muted mt-1">{t('api_key_desc')}</p>
       </div>
-      <div className="flex gap-2">
+      <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
         <div className="relative flex-1">
           <input
             type={show ? 'text' : 'password'}
             value={key}
             onChange={(e) => setKey(e.target.value)}
             placeholder={t('api_key_placeholder')}
-            className="w-full px-4 py-2.5 rounded-xl border border-xiaomi-border bg-xiaomi-gray text-sm font-mono focus:outline-none focus:ring-2 focus:ring-xiaomi-orange/30 focus:border-xiaomi-orange transition-all"
+            className="w-full px-4 py-2.5 rounded-xl bg-xiaomi-dark border border-white/10 text-sm text-white font-mono placeholder:text-xiaomi-muted/50 transition-all"
           />
           <button
             onClick={() => setShow(!show)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 cursor-pointer"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-xiaomi-muted hover:text-white transition-colors cursor-pointer"
           >
             {show ? (
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -57,24 +57,26 @@ export default function ApiKeyInput() {
             )}
           </button>
         </div>
-        <button
-          onClick={handleSave}
-          className={`px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 cursor-pointer ${
-            saved
-              ? 'bg-green-500 text-white'
-              : 'bg-xiaomi-orange text-white hover:bg-xiaomi-orange-light active:scale-95'
-          }`}
-        >
-          {saved ? t('key_saved') : t('save_key')}
-        </button>
-        {key && (
+        <div className="flex gap-2">
           <button
-            onClick={handleClear}
-            className="px-4 py-2.5 rounded-xl border border-red-200 text-red-500 text-sm font-medium hover:bg-red-50 transition-all duration-200 cursor-pointer"
+            onClick={handleSave}
+            className={`px-5 py-2.5 rounded-xl font-medium text-sm transition-all cursor-pointer whitespace-nowrap ${
+              saved
+                ? 'bg-green-600 text-white'
+                : 'bg-xiaomi-orange text-white hover:bg-orange-600'
+            }`}
           >
-            {t('clear_key')}
+            {saved ? t('key_saved') : t('save_key')}
           </button>
-        )}
+          {key && (
+            <button
+              onClick={handleClear}
+              className="px-4 py-2.5 rounded-xl border border-white/10 text-sm text-xiaomi-muted hover:text-white hover:border-xiaomi-red/50 transition-all cursor-pointer whitespace-nowrap"
+            >
+              {t('clear_key')}
+            </button>
+          )}
+        </div>
       </div>
     </div>
   )

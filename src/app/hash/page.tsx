@@ -253,29 +253,30 @@ export default function HashPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-6 sm:py-10 space-y-6 sm:space-y-10">
       <div>
-        <h1 className="text-2xl font-bold text-xiaomi-dark">{t('nav_hash')}</h1>
-        <p className="text-gray-500 mt-1">{t('feat_hash_desc')}</p>
+        <h1 className="text-xl sm:text-2xl font-bold">{t('nav_hash')}</h1>
+        <p className="text-xiaomi-muted text-sm mt-1">{t('feat_hash_desc')}</p>
       </div>
 
       {/* Main Hash Generator */}
-      <div className="bg-white rounded-2xl border border-xiaomi-border p-6 space-y-5">
+      <div className="bg-xiaomi-card/50 border border-white/5 rounded-xl p-5 sm:p-6 space-y-5">
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="flex-1">
-            <label className="block text-sm font-medium text-gray-700 mb-2">{t('input_text')}</label>
+            <label className="block text-sm font-medium text-xiaomi-muted mb-2">{t('input_text')}</label>
             <textarea
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder={t('hash_placeholder')}
               rows={3}
-              className="w-full px-4 py-3 rounded-xl border border-xiaomi-border bg-xiaomi-gray text-sm font-mono focus:outline-none focus:ring-2 focus:ring-xiaomi-orange/30 focus:border-xiaomi-orange transition-all resize-none"
+              className="w-full px-4 py-2.5 rounded-xl bg-xiaomi-dark border border-white/10 text-sm text-white font-mono placeholder:text-xiaomi-muted/50 transition-all resize-none"
             />
           </div>
           <div className="sm:w-48">
-            <label className="block text-sm font-medium text-gray-700 mb-2">{t('select_algo')}</label>
+            <label className="block text-sm font-medium text-xiaomi-muted mb-2">{t('select_algo')}</label>
             <select
               value={algo}
               onChange={(e) => setAlgo(e.target.value as HashAlgo)}
-              className="w-full px-4 py-3 rounded-xl border border-xiaomi-border bg-xiaomi-gray text-sm font-mono focus:outline-none focus:ring-2 focus:ring-xiaomi-orange/30 focus:border-xiaomi-orange transition-all cursor-pointer"
+              className="w-full px-4 py-2.5 rounded-xl bg-xiaomi-dark border border-white/10 text-sm text-white font-mono cursor-pointer transition-all appearance-none"
+              style={{ backgroundImage: 'url("data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3e%3cpath fill=%27none%27 stroke=%27%238892b0%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27 stroke-width=%272%27 d=%27M2 5l6 6 6-6%27/%3e%3c/svg%3e")', backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center', backgroundSize: '16px 12px', paddingRight: '36px' }}
             >
               {algos.map((a) => (
                 <option key={a} value={a}>{a}</option>
@@ -287,13 +288,13 @@ export default function HashPage() {
         <div className="flex items-center gap-3">
           <button
             onClick={handleGenerate}
-            className="px-6 py-2.5 bg-xiaomi-orange text-white rounded-xl font-medium text-sm hover:bg-xiaomi-orange-light active:scale-95 transition-all duration-200 cursor-pointer"
+            className="px-6 py-2.5 bg-xiaomi-orange hover:bg-orange-600 text-white rounded-xl font-medium text-sm transition-all cursor-pointer"
           >
             {t('nav_hash')}
           </button>
           <button
             onClick={() => { setInput(''); setResult('') }}
-            className="px-4 py-2.5 border border-xiaomi-border rounded-xl text-sm text-gray-600 hover:border-gray-300 transition-all cursor-pointer"
+            className="px-4 py-2.5 rounded-xl border border-white/10 text-sm text-xiaomi-muted hover:text-white hover:border-white/20 transition-all cursor-pointer"
           >
             {t('clear')}
           </button>
@@ -301,14 +302,14 @@ export default function HashPage() {
 
         {result && (
           <div className="space-y-2">
-            <label className="block text-sm font-medium text-gray-700">{t('hash_result')}</label>
+            <label className="block text-sm font-medium text-xiaomi-muted">{t('hash_result')}</label>
             <div className="relative">
-              <div className="w-full px-4 py-3 rounded-xl bg-xiaomi-dark text-green-400 text-sm font-mono break-all select-all leading-relaxed">
+              <div className="w-full px-4 py-3 rounded-xl bg-[#0a0a1a] border border-white/10 text-green-400 text-sm font-mono break-all select-all leading-relaxed">
                 {result}
               </div>
               <button
                 onClick={handleCopy}
-                className="absolute top-2 right-2 px-3 py-1.5 rounded-lg bg-white/10 text-white text-xs font-medium hover:bg-white/20 transition-all cursor-pointer"
+                className="absolute top-2 right-2 px-3 py-1.5 rounded-lg bg-white/5 text-white/70 text-xs font-medium hover:bg-white/10 transition-all cursor-pointer"
               >
                 {copied ? t('copied') : t('copy')}
               </button>
@@ -318,12 +319,12 @@ export default function HashPage() {
       </div>
 
       {/* File Hash */}
-      <div className="bg-white rounded-2xl border border-xiaomi-border p-6">
-        <h2 className="text-lg font-semibold text-xiaomi-dark mb-1">{t('file_hash')}</h2>
-        <p className="text-sm text-gray-500 mb-4">{t('file_hash_desc')}</p>
+      <div className="bg-xiaomi-card/50 border border-white/5 rounded-xl p-5 sm:p-6">
+        <h2 className="font-semibold mb-1">{t('file_hash')}</h2>
+        <p className="text-sm text-xiaomi-muted mb-4">{t('file_hash_desc')}</p>
         <div
           onClick={() => fileInputRef.current?.click()}
-          className="border-2 border-dashed border-xiaomi-border rounded-xl p-8 text-center hover:border-xiaomi-orange/40 hover:bg-xiaomi-orange/5 transition-all cursor-pointer"
+          className="border-2 border-dashed border-white/10 rounded-xl py-8 sm:py-10 text-center hover:border-xiaomi-orange/40 hover:bg-white/[0.02] transition-all cursor-pointer"
         >
           <input
             ref={fileInputRef}
@@ -332,37 +333,37 @@ export default function HashPage() {
             onChange={(e) => e.target.files?.[0] && handleFileHash(e.target.files[0])}
           />
           {fileHashing ? (
-            <p className="text-sm text-gray-500">{t('processing')}</p>
+            <p className="text-sm text-xiaomi-muted">{t('processing')}</p>
           ) : (
-            <p className="text-sm text-gray-500">{t('drop_file')}</p>
+            <p className="text-sm text-xiaomi-muted">{t('drop_file')}</p>
           )}
         </div>
         {fileHash && (
-          <div className="mt-4 px-4 py-3 rounded-xl bg-xiaomi-dark text-green-400 text-sm font-mono break-all">
+          <div className="mt-4 px-4 py-3 rounded-xl bg-[#0a0a1a] border border-white/10 text-green-400 text-sm font-mono break-all">
             {fileHash}
           </div>
         )}
       </div>
 
       {/* Hash Compare */}
-      <div className="bg-white rounded-2xl border border-xiaomi-border p-6">
-        <h2 className="text-lg font-semibold text-xiaomi-dark mb-1">{t('hash_compare')}</h2>
-        <p className="text-sm text-gray-500 mb-4">{t('hash_compare_desc')}</p>
+      <div className="bg-xiaomi-card/50 border border-white/5 rounded-xl p-5 sm:p-6">
+        <h2 className="font-semibold mb-1">{t('hash_compare')}</h2>
+        <p className="text-sm text-xiaomi-muted mb-4">{t('hash_compare_desc')}</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">{t('first_input')}</label>
+            <label className="block text-sm font-medium text-xiaomi-muted mb-2">{t('first_input')}</label>
             <input
               value={compare1}
               onChange={(e) => setCompare1(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl border border-xiaomi-border bg-xiaomi-gray text-sm font-mono focus:outline-none focus:ring-2 focus:ring-xiaomi-orange/30 focus:border-xiaomi-orange transition-all"
+              className="w-full px-4 py-2.5 rounded-xl bg-xiaomi-dark border border-white/10 text-sm text-white font-mono transition-all"
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">{t('second_input')}</label>
+            <label className="block text-sm font-medium text-xiaomi-muted mb-2">{t('second_input')}</label>
             <input
               value={compare2}
               onChange={(e) => setCompare2(e.target.value)}
-              className="w-full px-4 py-2.5 rounded-xl border border-xiaomi-border bg-xiaomi-gray text-sm font-mono focus:outline-none focus:ring-2 focus:ring-xiaomi-orange/30 focus:border-xiaomi-orange transition-all"
+              className="w-full px-4 py-2.5 rounded-xl bg-xiaomi-dark border border-white/10 text-sm text-white font-mono transition-all"
             />
           </div>
         </div>
@@ -370,8 +371,8 @@ export default function HashPage() {
           <div className="mt-4">
             <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium ${
               compare1 === compare2
-                ? 'bg-green-50 text-green-700 border border-green-200'
-                : 'bg-red-50 text-red-700 border border-red-200'
+                ? 'bg-green-600/10 text-green-400 border border-green-600/20'
+                : 'bg-red-600/10 text-red-400 border border-red-600/20'
             }`}>
               {compare1 === compare2 ? t('match') : t('no_match')}
             </span>
@@ -379,7 +380,7 @@ export default function HashPage() {
         )}
       </div>
 
-      {/* API Key Section */}
+      {/* API Key */}
       <ApiKeyInput />
     </div>
   )

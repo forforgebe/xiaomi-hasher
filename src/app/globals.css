@@ -3,11 +3,26 @@
 @theme {
   --color-xiaomi-orange: #FF6900;
   --color-xiaomi-orange-light: #FF8C38;
-  --color-xiaomi-dark: #1A1A1A;
-  --color-xiaomi-gray: #F5F5F5;
-  --color-xiaomi-border: #E5E5E5;
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --font-mono: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+  --color-xiaomi-dark: #1a1a2e;
+  --color-xiaomi-card: #16213e;
+  --color-xiaomi-accent: #0f3460;
+  --color-xiaomi-text: #e8e8e8;
+  --color-xiaomi-muted: #8892b0;
+  --color-xiaomi-green: #00c853;
+  --color-xiaomi-red: #ff1744;
+  --color-xiaomi-yellow: #ffd600;
+  --color-xiaomi-border: rgba(255, 255, 255, 0.05);
+}
+
+:root {
+  --background: #0a0a1a;
+  --foreground: #e8e8e8;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
 * {
@@ -16,15 +31,18 @@
   box-sizing: border-box;
 }
 
-body {
-  font-family: var(--font-sans);
-  background: #FFFFFF;
-  color: var(--color-xiaomi-dark);
-  min-height: 100vh;
-}
-
-/* Xiaomi-style scrollbar */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #999; }
+::-webkit-scrollbar-track { background: #1a1a2e; }
+::-webkit-scrollbar-thumb { background: #0f3460; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #FF6900; }
+
+.glow-orange { box-shadow: 0 0 20px rgba(255, 105, 0, 0.3); }
+.glow-green { box-shadow: 0 0 20px rgba(0, 200, 83, 0.3); }
+
+input, select, textarea {
+  outline: none;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: #FF6900 !important;
+  box-shadow: 0 0 0 2px rgba(255, 105, 0, 0.15) !important;
+}

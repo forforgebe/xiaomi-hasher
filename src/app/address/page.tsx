@@ -149,25 +149,25 @@ export default function AddressPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-6 sm:py-10 space-y-6 sm:space-y-10">
       <div>
-        <h1 className="text-2xl font-bold text-xiaomi-dark">{t('nav_address')}</h1>
-        <p className="text-gray-500 mt-1">{t('feat_address_desc')}</p>
+        <h1 className="text-xl sm:text-2xl font-bold">{t('nav_address')}</h1>
+        <p className="text-xiaomi-muted text-sm mt-1">{t('feat_address_desc')}</p>
       </div>
 
       {/* Input */}
-      <div className="bg-white rounded-2xl border border-xiaomi-border p-6 space-y-5">
+      <div className="bg-xiaomi-card/50 border border-white/5 rounded-xl p-5 sm:p-6 space-y-5">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-2">{t('address_input')}</label>
-          <div className="flex gap-3">
+          <label className="block text-sm font-medium text-xiaomi-muted mb-2">{t('address_input')}</label>
+          <div className="flex flex-col sm:flex-row gap-3">
             <input
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleAnalyze()}
               placeholder={t('address_placeholder')}
-              className="flex-1 px-4 py-3 rounded-xl border border-xiaomi-border bg-xiaomi-gray text-sm font-mono focus:outline-none focus:ring-2 focus:ring-xiaomi-orange/30 focus:border-xiaomi-orange transition-all"
+              className="flex-1 px-4 py-2.5 rounded-xl bg-xiaomi-dark border border-white/10 text-sm text-white font-mono placeholder:text-xiaomi-muted/50 transition-all"
             />
             <button
               onClick={handleAnalyze}
-              className="px-6 py-3 bg-xiaomi-orange text-white rounded-xl font-medium text-sm hover:bg-xiaomi-orange-light active:scale-95 transition-all duration-200 cursor-pointer"
+              className="px-6 py-2.5 bg-xiaomi-orange hover:bg-orange-600 text-white rounded-xl font-medium text-sm transition-all cursor-pointer whitespace-nowrap"
             >
               {t('analyze')}
             </button>
@@ -176,15 +176,15 @@ export default function AddressPage() {
 
         {/* Quick examples */}
         <div>
-          <p className="text-xs text-gray-400 mb-2">Try an example:</p>
+          <p className="text-xs text-xiaomi-muted mb-2">Try an example:</p>
           <div className="flex flex-wrap gap-2">
             {recentAddresses.map((addr) => (
               <button
                 key={addr}
                 onClick={() => { setAddress(addr); setInfo(analyzeAddress(addr)) }}
-                className="px-3 py-1.5 rounded-lg border border-xiaomi-border text-xs font-mono text-gray-500 hover:border-xiaomi-orange hover:text-xiaomi-orange transition-all cursor-pointer truncate max-w-[200px]"
+                className="px-3 py-1.5 rounded-lg border border-white/10 text-xs font-mono text-xiaomi-muted hover:text-white hover:border-xiaomi-orange/40 transition-all cursor-pointer truncate max-w-[180px]"
               >
-                {addr.slice(0, 10)}...{addr.slice(-6)}
+                {addr.slice(0, 8)}...{addr.slice(-6)}
               </button>
             ))}
           </div>
@@ -193,52 +193,52 @@ export default function AddressPage() {
 
       {/* Results */}
       {info && (
-        <div className="bg-white rounded-2xl border border-xiaomi-border p-6 space-y-6">
+        <div className="bg-xiaomi-card/50 border border-white/5 rounded-xl p-5 sm:p-6 space-y-5">
           {/* Status Badge */}
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium ${
               info.valid
-                ? 'bg-green-50 text-green-700 border border-green-200'
-                : 'bg-red-50 text-red-700 border border-red-200'
+                ? 'bg-green-600/10 text-green-400 border border-green-600/20'
+                : 'bg-red-600/10 text-red-400 border border-red-600/20'
             }`}>
-              <span className={`w-2 h-2 rounded-full ${info.valid ? 'bg-green-500' : 'bg-red-500'}`} />
+              <span className={`w-2 h-2 rounded-full ${info.valid ? 'bg-green-400' : 'bg-red-400'}`} />
               {info.valid ? t('valid') : t('invalid')}
             </span>
-            <span className="px-4 py-2 rounded-xl bg-xiaomi-gray text-sm font-medium text-gray-700">
+            <span className="px-4 py-2 rounded-xl bg-xiaomi-dark border border-white/10 text-sm font-medium text-xiaomi-muted">
               {info.type}
             </span>
           </div>
 
           {/* Address display */}
-          <div className="px-4 py-3 rounded-xl bg-xiaomi-dark text-green-400 text-sm font-mono break-all">
+          <div className="px-4 py-3 rounded-xl bg-[#0a0a1a] border border-white/10 text-green-400 text-sm font-mono break-all">
             {address.trim()}
           </div>
 
           {/* Details grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div className="p-4 rounded-xl bg-xiaomi-gray">
-              <p className="text-xs text-gray-500 mb-1">{t('chain')}</p>
-              <p className="text-sm font-semibold text-xiaomi-dark">{info.chain}</p>
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+            <div className="p-3 sm:p-4 rounded-xl bg-xiaomi-dark border border-white/[0.03]">
+              <p className="text-xs text-xiaomi-muted mb-1">{t('chain')}</p>
+              <p className="text-sm font-semibold text-white">{info.chain}</p>
             </div>
-            <div className="p-4 rounded-xl bg-xiaomi-gray">
-              <p className="text-xs text-gray-500 mb-1">{t('address_type')}</p>
-              <p className="text-sm font-semibold text-xiaomi-dark">{info.type}</p>
+            <div className="p-3 sm:p-4 rounded-xl bg-xiaomi-dark border border-white/[0.03]">
+              <p className="text-xs text-xiaomi-muted mb-1">{t('address_type')}</p>
+              <p className="text-sm font-semibold text-white">{info.type}</p>
             </div>
-            <div className="p-4 rounded-xl bg-xiaomi-gray">
-              <p className="text-xs text-gray-500 mb-1">{t('length')}</p>
-              <p className="text-sm font-semibold text-xiaomi-dark">{info.length} chars</p>
+            <div className="p-3 sm:p-4 rounded-xl bg-xiaomi-dark border border-white/[0.03]">
+              <p className="text-xs text-xiaomi-muted mb-1">{t('length')}</p>
+              <p className="text-sm font-semibold text-white">{info.length} chars</p>
             </div>
-            <div className="p-4 rounded-xl bg-xiaomi-gray">
-              <p className="text-xs text-gray-500 mb-1">{t('checksum')}</p>
-              <p className="text-sm font-semibold text-xiaomi-dark">{info.checksum}</p>
+            <div className="p-3 sm:p-4 rounded-xl bg-xiaomi-dark border border-white/[0.03]">
+              <p className="text-xs text-xiaomi-muted mb-1">{t('checksum')}</p>
+              <p className="text-sm font-semibold text-white">{info.checksum}</p>
             </div>
           </div>
 
           {/* Details list */}
           <div className="space-y-2">
             {info.details.map((d, i) => (
-              <div key={i} className="flex items-center gap-2 text-sm text-gray-600">
-                <span className="w-1.5 h-1.5 rounded-full bg-xiaomi-orange" />
+              <div key={i} className="flex items-center gap-2 text-sm text-xiaomi-muted">
+                <span className="w-1.5 h-1.5 rounded-full bg-xiaomi-orange shrink-0" />
                 {d}
               </div>
             ))}

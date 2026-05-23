@@ -77,31 +77,31 @@ export default function ChatPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-6 sm:py-10 space-y-6 sm:space-y-10">
       <div>
-        <h1 className="text-2xl font-bold text-xiaomi-dark">{t('chat_title')}</h1>
-        <p className="text-gray-500 mt-1">{t('feat_ai_desc')}</p>
+        <h1 className="text-xl sm:text-2xl font-bold">{t('chat_title')}</h1>
+        <p className="text-xiaomi-muted text-sm mt-1">{t('feat_ai_desc')}</p>
       </div>
 
-      {/* API Key Warning */}
+      {/* API Key */}
       <ApiKeyInput />
 
       {/* Chat */}
-      <div className="bg-white rounded-2xl border border-xiaomi-border overflow-hidden">
+      <div className="bg-xiaomi-card/50 border border-white/5 rounded-xl overflow-hidden">
         {/* Messages */}
-        <div className="h-[400px] overflow-y-auto p-6 space-y-4">
+        <div className="h-[350px] sm:h-[400px] overflow-y-auto p-4 sm:p-6 space-y-4">
           {messages.map((msg, i) => (
             <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-              <div className={`max-w-[80%] rounded-2xl px-4 py-3 text-sm leading-relaxed ${
+              <div className={`max-w-[90%] sm:max-w-[80%] rounded-xl px-4 py-3 text-sm leading-relaxed ${
                 msg.role === 'user'
-                  ? 'bg-xiaomi-orange text-white rounded-br-md'
-                  : 'bg-xiaomi-gray text-xiaomi-dark rounded-bl-md'
+                  ? 'bg-xiaomi-orange text-white rounded-br-sm'
+                  : 'bg-xiaomi-dark border border-white/[0.03] text-xiaomi-text rounded-bl-sm'
               }`}>
-                <p className="whitespace-pre-wrap">{msg.content}</p>
+                <p className="whitespace-pre-wrap break-words">{msg.content}</p>
               </div>
             </div>
           ))}
           {loading && (
             <div className="flex justify-start">
-              <div className="max-w-[80%] rounded-2xl rounded-bl-md px-4 py-3 bg-xiaomi-gray text-sm text-gray-500">
+              <div className="max-w-[90%] sm:max-w-[80%] rounded-xl rounded-bl-sm px-4 py-3 bg-xiaomi-dark border border-white/[0.03] text-sm text-xiaomi-muted">
                 <div className="flex items-center gap-2">
                   <span className="w-2 h-2 rounded-full bg-xiaomi-orange animate-bounce" style={{ animationDelay: '0ms' }} />
                   <span className="w-2 h-2 rounded-full bg-xiaomi-orange animate-bounce" style={{ animationDelay: '150ms' }} />
@@ -113,7 +113,7 @@ export default function ChatPage() {
           )}
           {error && (
             <div className="flex justify-center">
-              <div className="px-4 py-2 rounded-xl bg-red-50 border border-red-200 text-red-600 text-xs">
+              <div className="px-4 py-2 rounded-xl bg-red-600/10 border border-red-600/20 text-red-400 text-xs">
                 {error}
               </div>
             </div>
@@ -122,7 +122,7 @@ export default function ChatPage() {
         </div>
 
         {/* Input */}
-        <div className="border-t border-xiaomi-border p-4">
+        <div className="border-t border-white/5 p-3 sm:p-4">
           <div className="flex gap-3">
             <input
               value={input}
@@ -130,12 +130,12 @@ export default function ChatPage() {
               onKeyDown={(e) => e.key === 'Enter' && !e.shiftKey && handleSend()}
               placeholder={t('chat_placeholder')}
               disabled={loading}
-              className="flex-1 px-4 py-2.5 rounded-xl border border-xiaomi-border bg-xiaomi-gray text-sm focus:outline-none focus:ring-2 focus:ring-xiaomi-orange/30 focus:border-xiaomi-orange transition-all disabled:opacity-50"
+              className="flex-1 px-4 py-2.5 rounded-xl bg-xiaomi-dark border border-white/10 text-sm text-white placeholder:text-xiaomi-muted/50 transition-all disabled:opacity-50"
             />
             <button
               onClick={handleSend}
               disabled={loading || !input.trim()}
-              className="px-5 py-2.5 bg-xiaomi-orange text-white rounded-xl font-medium text-sm hover:bg-xiaomi-orange-light active:scale-95 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+              className="px-5 py-2.5 bg-xiaomi-orange hover:bg-orange-600 text-white rounded-xl font-medium text-sm transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer whitespace-nowrap"
             >
               {t('send')}
             </button>
