@@ -60,7 +60,7 @@ export default function HomePage() {
             <Link
               key={feat.key}
               href={feat.href}
-              className="bg-xiaomi-card/50 border border-white/5 rounded-xl p-5 sm:p-6 hover:border-xiaomi-orange/30 transition-all"
+              className="bg-xiaomi-card border border-white/5 rounded-xl p-5 sm:p-6 hover:border-xiaomi-orange/30 transition-all"
             >
               <div className="text-xl sm:text-2xl mb-3">{feat.icon}</div>
               <h3 className="font-semibold mb-2 text-sm sm:text-base">{t(feat.key)}</h3>
@@ -72,7 +72,7 @@ export default function HomePage() {
 
       {/* About */}
       <section className="max-w-5xl mx-auto px-4 py-16">
-        <div className="bg-xiaomi-card/50 border border-white/5 rounded-xl p-6 sm:p-8 text-center">
+        <div className="bg-xiaomi-card border border-white/5 rounded-xl p-6 sm:p-8 text-center">
           <h2 className="text-2xl font-bold mb-4">{t('about_title')}</h2>
           <p className="text-sm text-xiaomi-muted max-w-2xl mx-auto leading-relaxed">
             {t('about_desc')}

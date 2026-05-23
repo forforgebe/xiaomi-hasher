@@ -258,7 +258,7 @@ export default function HashPage() {
       </div>
 
       {/* Main Hash Generator */}
-      <div className="bg-xiaomi-card/50 border border-white/5 rounded-xl p-5 sm:p-6 space-y-5">
+      <div className="bg-xiaomi-card border border-white/5 rounded-xl p-5 sm:p-6 space-y-5">
         <div className="flex flex-col sm:flex-row gap-4">
           <div className="flex-1">
             <label className="block text-sm font-medium text-xiaomi-muted mb-2">{t('input_text')}</label>
@@ -319,7 +319,7 @@ export default function HashPage() {
       </div>
 
       {/* File Hash */}
-      <div className="bg-xiaomi-card/50 border border-white/5 rounded-xl p-5 sm:p-6">
+      <div className="bg-xiaomi-card border border-white/5 rounded-xl p-5 sm:p-6">
         <h2 className="font-semibold mb-1">{t('file_hash')}</h2>
         <p className="text-sm text-xiaomi-muted mb-4">{t('file_hash_desc')}</p>
         <div
@@ -346,7 +346,7 @@ export default function HashPage() {
       </div>
 
       {/* Hash Compare */}
-      <div className="bg-xiaomi-card/50 border border-white/5 rounded-xl p-5 sm:p-6">
+      <div className="bg-xiaomi-card border border-white/5 rounded-xl p-5 sm:p-6">
         <h2 className="font-semibold mb-1">{t('hash_compare')}</h2>
         <p className="text-sm text-xiaomi-muted mb-4">{t('hash_compare_desc')}</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

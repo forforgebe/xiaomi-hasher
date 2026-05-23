@@ -154,7 +154,7 @@ export default function AddressPage() {
       </div>
 
       {/* Input */}
-      <div className="bg-xiaomi-card/50 border border-white/5 rounded-xl p-5 sm:p-6 space-y-5">
+      <div className="bg-xiaomi-card border border-white/5 rounded-xl p-5 sm:p-6 space-y-5">
         <div>
           <label className="block text-sm font-medium text-xiaomi-muted mb-2">{t('address_input')}</label>
           <div className="flex flex-col sm:flex-row gap-3">
@@ -193,7 +193,7 @@ export default function AddressPage() {
 
       {/* Results */}
       {info && (
-        <div className="bg-xiaomi-card/50 border border-white/5 rounded-xl p-5 sm:p-6 space-y-5">
+        <div className="bg-xiaomi-card border border-white/5 rounded-xl p-5 sm:p-6 space-y-5">
           {/* Status Badge */}
           <div className="flex flex-wrap items-center gap-3">
             <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium ${
