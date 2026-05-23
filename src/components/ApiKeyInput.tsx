@@ -27,10 +27,10 @@ export default function ApiKeyInput() {
   }
 
   return (
-    <div className="bg-xiaomi-card border border-white/5 rounded-xl p-5 sm:p-6 space-y-4">
+    <div className="bg-card border border-card rounded-xl p-5 sm:p-6 space-y-4">
       <div>
         <h3 className="text-base sm:text-lg font-semibold">{t('api_key_title')}</h3>
-        <p className="text-xs sm:text-sm text-xiaomi-muted mt-1">{t('api_key_desc')}</p>
+        <p className="text-xs sm:text-sm text-muted mt-1">{t('api_key_desc')}</p>
       </div>
       <div className="flex flex-col sm:flex-row gap-2 sm:gap-3">
         <div className="relative flex-1">
@@ -39,11 +39,11 @@ export default function ApiKeyInput() {
             value={key}
             onChange={(e) => setKey(e.target.value)}
             placeholder={t('api_key_placeholder')}
-            className="w-full px-4 py-2.5 rounded-xl bg-xiaomi-dark border border-white/10 text-sm text-white font-mono placeholder:text-xiaomi-muted/50 transition-all"
+            className="w-full px-4 py-2.5 rounded-xl bg-input border border-input text-sm text-fg font-mono placeholder:text-muted/50 transition-all"
           />
           <button
             onClick={() => setShow(!show)}
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-xiaomi-muted hover:text-white transition-colors cursor-pointer"
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-fg transition-colors cursor-pointer"
           >
             {show ? (
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -71,7 +71,7 @@ export default function ApiKeyInput() {
           {key && (
             <button
               onClick={handleClear}
-              className="px-4 py-2.5 rounded-xl border border-white/10 text-sm text-xiaomi-muted hover:text-white hover:border-xiaomi-red/50 transition-all cursor-pointer whitespace-nowrap"
+              className="px-4 py-2.5 rounded-xl border border-input text-sm text-muted hover:text-fg transition-all cursor-pointer whitespace-nowrap"
             >
               {t('clear_key')}
             </button>

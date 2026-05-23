@@ -150,20 +150,20 @@ export default function AddressPage() {
     <div className="max-w-4xl mx-auto px-4 py-6 sm:py-10 space-y-6 sm:space-y-10">
       <div>
         <h1 className="text-xl sm:text-2xl font-bold">{t('nav_address')}</h1>
-        <p className="text-xiaomi-muted text-sm mt-1">{t('feat_address_desc')}</p>
+        <p className="text-muted text-sm mt-1">{t('feat_address_desc')}</p>
       </div>
 
       {/* Input */}
-      <div className="bg-xiaomi-card border border-white/5 rounded-xl p-5 sm:p-6 space-y-5">
+      <div className="bg-card border border-card rounded-xl p-5 sm:p-6 space-y-5">
         <div>
-          <label className="block text-sm font-medium text-xiaomi-muted mb-2">{t('address_input')}</label>
+          <label className="block text-sm font-medium text-muted mb-2">{t('address_input')}</label>
           <div className="flex flex-col sm:flex-row gap-3">
             <input
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleAnalyze()}
               placeholder={t('address_placeholder')}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-xiaomi-dark border border-white/10 text-sm text-white font-mono placeholder:text-xiaomi-muted/50 transition-all"
+              className="flex-1 px-4 py-2.5 rounded-xl bg-input border border-input text-sm text-fg font-mono placeholder:text-muted/50 transition-all"
             />
             <button
               onClick={handleAnalyze}
@@ -176,13 +176,13 @@ export default function AddressPage() {
 
         {/* Quick examples */}
         <div>
-          <p className="text-xs text-xiaomi-muted mb-2">Try an example:</p>
+          <p className="text-xs text-muted mb-2">Try an example:</p>
           <div className="flex flex-wrap gap-2">
             {recentAddresses.map((addr) => (
               <button
                 key={addr}
                 onClick={() => { setAddress(addr); setInfo(analyzeAddress(addr)) }}
-                className="px-3 py-1.5 rounded-lg border border-white/10 text-xs font-mono text-xiaomi-muted hover:text-white hover:border-xiaomi-orange/40 transition-all cursor-pointer truncate max-w-[180px]"
+                className="px-3 py-1.5 rounded-lg border border-input text-xs font-mono text-muted hover:text-fg hover:border-xiaomi-orange/40 transition-all cursor-pointer truncate max-w-[180px]"
               >
                 {addr.slice(0, 8)}...{addr.slice(-6)}
               </button>
@@ -193,7 +193,7 @@ export default function AddressPage() {
 
       {/* Results */}
       {info && (
-        <div className="bg-xiaomi-card border border-white/5 rounded-xl p-5 sm:p-6 space-y-5">
+        <div className="bg-card border border-card rounded-xl p-5 sm:p-6 space-y-5">
           {/* Status Badge */}
           <div className="flex flex-wrap items-center gap-3">
             <span className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium ${
@@ -204,32 +204,32 @@ export default function AddressPage() {
               <span className={`w-2 h-2 rounded-full ${info.valid ? 'bg-green-400' : 'bg-red-400'}`} />
               {info.valid ? t('valid') : t('invalid')}
             </span>
-            <span className="px-4 py-2 rounded-xl bg-xiaomi-dark border border-white/10 text-sm font-medium text-xiaomi-muted">
+            <span className="px-4 py-2 rounded-xl bg-input border border-input text-sm font-medium text-muted">
               {info.type}
             </span>
           </div>
 
           {/* Address display */}
-          <div className="px-4 py-3 rounded-xl bg-[#0a0a1a] border border-white/10 text-green-400 text-sm font-mono break-all">
+          <div className="px-4 py-3 rounded-xl bg-result border border-input text-green-400 text-sm font-mono break-all">
             {address.trim()}
           </div>
 
           {/* Details grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-            <div className="p-3 sm:p-4 rounded-xl bg-xiaomi-dark border border-white/[0.03]">
-              <p className="text-xs text-xiaomi-muted mb-1">{t('chain')}</p>
+            <div className="p-3 sm:p-4 rounded-xl bg-input border border-input">
+              <p className="text-xs text-muted mb-1">{t('chain')}</p>
               <p className="text-sm font-semibold text-white">{info.chain}</p>
             </div>
-            <div className="p-3 sm:p-4 rounded-xl bg-xiaomi-dark border border-white/[0.03]">
-              <p className="text-xs text-xiaomi-muted mb-1">{t('address_type')}</p>
+            <div className="p-3 sm:p-4 rounded-xl bg-input border border-input">
+              <p className="text-xs text-muted mb-1">{t('address_type')}</p>
               <p className="text-sm font-semibold text-white">{info.type}</p>
             </div>
-            <div className="p-3 sm:p-4 rounded-xl bg-xiaomi-dark border border-white/[0.03]">
-              <p className="text-xs text-xiaomi-muted mb-1">{t('length')}</p>
+            <div className="p-3 sm:p-4 rounded-xl bg-input border border-input">
+              <p className="text-xs text-muted mb-1">{t('length')}</p>
               <p className="text-sm font-semibold text-white">{info.length} chars</p>
             </div>
-            <div className="p-3 sm:p-4 rounded-xl bg-xiaomi-dark border border-white/[0.03]">
-              <p className="text-xs text-xiaomi-muted mb-1">{t('checksum')}</p>
+            <div className="p-3 sm:p-4 rounded-xl bg-input border border-input">
+              <p className="text-xs text-muted mb-1">{t('checksum')}</p>
               <p className="text-sm font-semibold text-white">{info.checksum}</p>
             </div>
           </div>
@@ -237,7 +237,7 @@ export default function AddressPage() {
           {/* Details list */}
           <div className="space-y-2">
             {info.details.map((d, i) => (
-              <div key={i} className="flex items-center gap-2 text-sm text-xiaomi-muted">
+              <div key={i} className="flex items-center gap-2 text-sm text-muted">
                 <span className="w-1.5 h-1.5 rounded-full bg-xiaomi-orange shrink-0" />
                 {d}
               </div>

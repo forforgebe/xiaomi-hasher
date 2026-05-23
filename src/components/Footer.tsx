@@ -6,7 +6,7 @@ type TKey = keyof typeof translations.en
 export default function Footer() {
   const { t } = useTranslation()
   return (
-    <footer className="border-t border-white/5 py-6 text-center text-xs text-xiaomi-muted">
+    <footer className="border-t border-card py-6 text-center text-xs text-muted">
       <p>{t('footer_text')}</p>
     </footer>
   )
