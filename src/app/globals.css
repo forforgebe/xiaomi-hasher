@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --color-xiaomi-orange: #FF6900;
+  --color-xiaomi-orange-light: #FF8C38;
+  --color-xiaomi-dark: #1A1A1A;
+  --color-xiaomi-gray: #F5F5F5;
+  --color-xiaomi-border: #E5E5E5;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Consolas", monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: #FFFFFF;
+  color: var(--color-xiaomi-dark);
+  min-height: 100vh;
+}
+
+/* Xiaomi-style scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #999; }
